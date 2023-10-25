@@ -1,0 +1,21 @@
+@import "@/styles/mixins.scss";
+
+.btn {
+  border-radius: 16px;
+  border: none;
+  background: var(--btn-color);
+
+  @include fontSizeAdaptive(20);
+  color: var(--text-color);
+  font-family: var(--font-secondary-bold);
+
+  cursor: pointer;
+}
+
+.logIn {
+  @include btnSizeAdaptive(142, 65);
+}
+
+.tryAIGen {
+  @include btnSizeAdaptive(317, 88);
+}

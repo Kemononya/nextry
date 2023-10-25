@@ -1,0 +1,41 @@
+@mixin fontSizeTitleAdaptive($maxFontSize) {
+  font-size: #{$maxFontSize + px};
+  @media (max-width: 1500px) {
+    font-size: calc(#{$maxFontSize * 0.7 + px});
+  }
+
+  @media (max-width: 1200px) {
+    font-size: calc(#{$maxFontSize * 0.5 + px});
+  }
+
+  @media (max-width: 900px) {
+    font-size: calc(#{$maxFontSize * 0.4 + px});
+  }
+}
+
+@mixin fontSizeAdaptive($maxFontSize) {
+  font-size: #{$maxFontSize + px};
+
+  @media (max-width: 1500px) {
+    font-size: calc(#{$maxFontSize * 0.9 + px});
+  }
+
+  @media (max-width: 900px) {
+    font-size: calc(#{$maxFontSize * 0.8 + px});
+  }
+}
+
+@mixin btnSizeAdaptive($maxWidthSize, $maxHeightSize) {
+  width: #{$maxWidthSize + px};
+  height: #{$maxHeightSize + px};
+
+  @media (max-width: 1500px) {
+    width: calc(#{$maxWidthSize * 0.9 + px});
+    height: calc(#{$maxHeightSize * 0.9 + px});
+  }
+
+  @media (max-width: 900px) {
+    width: calc(#{$maxWidthSize * 0.8 + px});
+    height: calc(#{$maxHeightSize * 0.8 + px});
+  }
+}

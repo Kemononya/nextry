@@ -1,0 +1,97 @@
+@import "./mixins.scss";
+
+@font-face {
+  font-family: "Euclid Square Regular";
+  src: url("../fonts/EuclidSquare-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Euclid Square SemiBold";
+  src: url("../fonts/EuclidSquare-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "Euclid Square Bold";
+  src: url("../fonts/EuclidSquare-Bold.ttf");
+}
+
+@font-face {
+  font-family: "TT Hoves";
+  src: url("../fonts/TTHoves-Bold.ttf");
+}
+
+:root {
+  --font-regular: "Euclid Square Regular", "Sans Serif", serif;
+  --font-semibold: "Euclid Square SemiBold", "Sans Serif", serif;
+  --font-bold: "Euclid Square Bold", "Sans-Serif", serif;
+
+  --font-secondary-bold: "TT Hoves", "Sans-Serif", serif;
+
+  --text-color: #fef8ef;
+  --background-color: #0b0511;
+  --faq-bg-color: #0d0e1b;
+  --btn-color: #2b5ac1;
+  --background-gradient-color: #00001f;
+  //#222d5a;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+  background: radial-gradient(
+    circle at top,
+    #222d5a,
+    var(--background-gradient-color),
+    var(--background-color) 25%
+  );
+  font-family: var(--font-regular);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+main {
+  width: 100%;
+}
+
+header {
+  min-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--text-color);
+  line-height: normal;
+
+  text-align: center;
+}
+
+h1 {
+  font-family: var(--font-bold);
+  @include fontSizeTitleAdaptive(120);
+}
+
+h2 {
+  font-family: var(--font-semibold);
+  @include fontSizeTitleAdaptive(60);
+}

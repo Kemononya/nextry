@@ -1,0 +1,121 @@
+@import "@/styles/mixins.scss";
+
+.faq {
+  padding: 150px 0 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+
+  width: 100%;
+
+  @media (max-width: 1200px) {
+    padding-top: 100px;
+  }
+
+  @media (max-width: 900px) {
+    padding-top: 50px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 90px;
+
+    @media (max-width: 1200px) {
+      gap: 70px;
+    }
+  }
+
+  &__questionBlock {
+    width: 75%;
+    height: fit-content;
+    background-color: var(--faq-bg-color);
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 30px;
+
+    position: relative;
+
+    @media (max-width: 1500px) {
+      width: 90%;
+    }
+
+    @media (max-width: 1200px) {
+      padding: 25px;
+      width: 90%;
+    }
+
+    > h3 {
+      font-family: var(--font-secondary-bold);
+      text-align: start;
+
+      width: 85%;
+
+      font-size: 24px;
+
+      @media (max-width: 1200px) {
+        font-size: 21px;
+      }
+
+      @media (max-width: 900px) {
+        font-size: 18px;
+      }
+    }
+
+    > p {
+      @include fontSizeAdaptive(20);
+      font-weight: 500;
+      color: var(--color-text);
+    }
+
+    button {
+      position: absolute;
+      right: 30px;
+
+      border: none;
+      background-color: var(--faq-bg-color);
+
+      cursor: pointer;
+    }
+  }
+
+  &__cornerLT,
+  &__cornerLB,
+  &__cornerRT,
+  &__cornerRB {
+    position: absolute;
+  }
+
+  &__cornerLT {
+    top: -20px;
+    left: -20px;
+  }
+
+  &__cornerLB {
+    bottom: -20px;
+    left: -20px;
+  }
+
+  &__cornerRT {
+    top: -20px;
+    right: -20px;
+  }
+
+  &__cornerRB {
+    bottom: -20px;
+    right: -20px;
+  }
+
+  &__elementShow {
+    display: block;
+  }
+
+  &__elementHide {
+    display: none;
+  }
+}
