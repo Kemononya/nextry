@@ -22,12 +22,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 400px;
+    gap: 300px;
 
     width: 100%;
 
     @media (max-width: 1500px) {
-      gap: 300px;
+      gap: 250px;
     }
 
     @media (max-width: 1200px) {
@@ -45,24 +45,25 @@
     justify-content: space-between;
 
     width: 100%;
-    height: 500px;
+    height: 392px;
 
     @media (max-width: 1500px) {
-      height: 400px;
-    }
-
-    @media (max-width: 1200px) {
       height: 300px;
     }
 
+    @media (max-width: 1200px) {
+      height: 250px;
+    }
+
     @media (max-width: 900px) {
-      height: 350px;
+      height: 200px;
     }
   }
 
   &__textBlock {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 20px;
 
     width: 45%;
@@ -81,37 +82,55 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 146px;
+
+    > div:nth-child(odd) {
+      width: 100%;
+      max-height: 100px;
+    }
 
     @media (max-width: 1500px) {
-      > img:nth-child(even) {
-        width: fit-content;
-        height: 600px;
+      padding-top: 106px;
+      > div:nth-child(even) {
+        width: 1px;
+        min-height: 460px;
       }
-      > img:nth-child(odd) {
-        width: fit-content;
-        height: 90px;
+      > div:nth-child(odd) {
+        max-height: 90px;
+        > img {
+          width: fit-content;
+          height: 90px;
+        }
       }
     }
 
     @media (max-width: 1200px) {
-      > img:nth-child(even) {
-        width: fit-content;
-        height: 420px;
+      padding-top: 80px;
+      > div:nth-child(even) {
+        width: 1px;
+        min-height: 370px;
       }
-      > img:nth-child(odd) {
-        width: fit-content;
-        height: 80px;
+      > div:nth-child(odd) {
+        max-height: 80px;
+        > img {
+          width: fit-content;
+          height: 80px;
+        }
       }
     }
 
     @media (max-width: 900px) {
-      > img:nth-child(even) {
+      padding-top: 60px;
+      > div:nth-child(even) {
         width: 1px;
-        height: 385px;
+        min-height: 230px;
       }
-      > img:nth-child(odd) {
-        width: fit-content;
-        height: 65px;
+      > div:nth-child(odd) {
+        max-height: 65px;
+        img {
+          width: fit-content;
+          height: 65px;
+        }
       }
     }
   }
@@ -120,4 +139,23 @@
     width: 45%;
     height: fit-content;
   }
+}
+
+.line {
+  width: fit-content;
+  min-height: 600px;
+}
+
+.filledLine {
+  width: 1px;
+  height: 0%;
+  background-color: var(--btn-color);
+  opacity: 1;
+}
+
+.paleLine {
+  width: 1px;
+  height: 100%;
+  background-color: var(--btn-color);
+  opacity: 0.2;
 }

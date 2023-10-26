@@ -1,11 +1,9 @@
 import Image from "next/image";
-import HowItWorkImage1 from "@/public/HowItWorkImage1.png";
-import HowItWorkImage2 from "@/public/HowItWorkImage2.png";
-import HowItWorkImage3 from "@/public/HowItWorkImage3.png";
-import InvestmentFocus from "@/public/InvestmentFocus.png";
-import InvestmentUnfocus from "@/public/InvestmentUnfocus.png";
-import LineTop from "@/public/LineTop.png";
-import LineBottom from "@/public/LineBottom.png";
+import { texts } from "./componentsAndHandlers/howItWorksTexts";
+import LinesAndCircles from "./componentsAndHandlers/LinesAndCircles";
+import Step1 from "@/public/Step1.webp";
+import Step2 from "@/public/Step2.webp";
+import Step3 from "@/public/Step3.webp";
 import style from "./HowItWork.module.scss";
 
 const HowItWork = () => {
@@ -18,27 +16,12 @@ const HowItWork = () => {
       <section className={style.howItWork__contentBlock}>
         <section className={style.howItWork__section}>
           <div className={style.howItWork__textBlock}>
-            <h2>Upload photo</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur. Dui congue sem et tempus
-              aliquam leo. In faucibus varius diam nunc. Urna euismod augue
-              interdum viverra donec semper. Eu neque vulputate sed sit eu magna
-              morbi nibh gravida. Aliquam massa id duis at luctus. Ornare in
-              eget aliquet morbi congue pulvinar vitae. Amet senectus eget
-              hendrerit ac pulvinar nunc aliquam accumsan. Donec purus purus
-              arcu sit purus massa. Imperdiet in dictumst et enim duis ac sed
-              vitae.
-            </p>
+            <h2>{texts[0].title}</h2>
+            <p>{texts[0].content}</p>
           </div>
-          <div className={style.howItWork__iconBlock}>
-            <Image src={InvestmentFocus} alt="icons" />
-            <Image src={LineTop} alt="icons" />
-            <Image src={InvestmentUnfocus} alt="icons" />
-            <Image src={LineBottom} alt="icons" />
-            <Image src={InvestmentUnfocus} alt="icons" />
-          </div>
+          <LinesAndCircles />
           <Image
-            src={HowItWorkImage1}
+            src={Step1}
             alt="how it work step"
             className={style.howItWork__imgBlock}
             placeholder="blur"
@@ -46,41 +29,23 @@ const HowItWork = () => {
         </section>
         <section className={style.howItWork__section}>
           <Image
-            src={HowItWorkImage2}
+            src={Step2}
             alt="how it work step"
             className={style.howItWork__imgBlock}
             placeholder="blur"
           />
           <div className={style.howItWork__textBlock}>
-            <h2>Select option</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur. Dui congue sem et tempus
-              aliquam leo. In faucibus varius diam nunc. Urna euismod augue
-              interdum viverra donec semper. Eu neque vulputate sed sit eu magna
-              morbi nibh gravida. Aliquam massa id duis at luctus. Ornare in
-              eget aliquet morbi congue pulvinar vitae. Amet senectus eget
-              hendrerit ac pulvinar nunc aliquam accumsan. Donec purus purus
-              arcu sit purus massa. Imperdiet in dictumst et enim duis ac sed
-              vitae.
-            </p>
+            <h2>{texts[1].title}</h2>
+            <p>{texts[1].content}</p>
           </div>
         </section>
         <section className={style.howItWork__section}>
           <div className={style.howItWork__textBlock}>
-            <h2>Generate Image</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur. Dui congue sem et tempus
-              aliquam leo. In faucibus varius diam nunc. Urna euismod augue
-              interdum viverra donec semper. Eu neque vulputate sed sit eu magna
-              morbi nibh gravida. Aliquam massa id duis at luctus. Ornare in
-              eget aliquet morbi congue pulvinar vitae. Amet senectus eget
-              hendrerit ac pulvinar nunc aliquam accumsan. Donec purus purus
-              arcu sit purus massa. Imperdiet in dictumst et enim duis ac sed
-              vitae.
-            </p>
+            <h2>{texts[2].title}</h2>
+            <p>{texts[2].content}</p>
           </div>
           <Image
-            src={HowItWorkImage3}
+            src={Step3}
             alt="how it work step"
             className={style.howItWork__imgBlock}
             placeholder="blur"

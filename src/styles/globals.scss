@@ -32,7 +32,7 @@
   --faq-bg-color: #0d0e1b;
   --btn-color: #2b5ac1;
   --background-gradient-color: #00001f;
-  //#222d5a;
+  --background-gradient-second-color: #202744;
 }
 
 * {
@@ -52,8 +52,8 @@ body {
   align-items: center;
   color: var(--text-color);
   background: radial-gradient(
-    circle at top,
-    #222d5a,
+    circle at 50% 15%,
+    var(--background-gradient-second-color),
     var(--background-gradient-color),
     var(--background-color) 25%
   );
@@ -88,10 +88,10 @@ h3 {
 
 h1 {
   font-family: var(--font-bold);
-  @include fontSizeTitleAdaptive(120);
+  @include fontSizeTitleAdaptive(80);
 }
 
 h2 {
   font-family: var(--font-semibold);
-  @include fontSizeTitleAdaptive(60);
+  @include fontSizeTitleAdaptive(40);
 }

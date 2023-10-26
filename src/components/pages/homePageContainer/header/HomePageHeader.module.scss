@@ -7,10 +7,12 @@
 
   padding: 50px 100px;
 
+  @media (max-width: 1200px) {
+    padding: 30px 75px;
+  }
+
   color: var(--text-color);
   @include fontSizeAdaptive(20);
-
-  background-color: #00001f;
 
   position: fixed;
   top: 0;

@@ -1,17 +1,19 @@
 "use client";
 
-import { ImgComparisonSlider } from "@img-comparison-slider/react";
+import { ReactCompareSlider } from "react-compare-slider";
 import Image from "next/image";
-import rightImg from "@/public/BGRight.png";
+import beforeImg from "@/public/before.webp";
+import afterImg from "@/public/after.webp";
 import style from "./Comparison.module.scss";
 
 const Comparison = () => {
   return (
     <article className={style.comparison}>
-      <ImgComparisonSlider>
-        <Image slot="first" src={rightImg} alt="ai-generator-example" />
-        <Image slot="second" src={rightImg} alt="ai-generator-example" />
-      </ImgComparisonSlider>
+      <ReactCompareSlider
+        itemOne={<Image src={beforeImg} alt="ai-generator-example-before" />}
+        itemTwo={<Image src={afterImg} alt="ai-generator-example-after" />}
+      />
+      <div className={style.patch}></div>
     </article>
   );
 };

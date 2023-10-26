@@ -25,12 +25,12 @@
     gap: 90px;
 
     @media (max-width: 1200px) {
-      gap: 70px;
+      gap: 50px;
     }
   }
 
   &__questionBlock {
-    width: 75%;
+    width: 100%;
     height: fit-content;
     background-color: var(--faq-bg-color);
 
@@ -41,13 +41,8 @@
 
     position: relative;
 
-    @media (max-width: 1500px) {
-      width: 90%;
-    }
-
     @media (max-width: 1200px) {
       padding: 25px;
-      width: 90%;
     }
 
     > h3 {
@@ -82,33 +77,6 @@
 
       cursor: pointer;
     }
-  }
-
-  &__cornerLT,
-  &__cornerLB,
-  &__cornerRT,
-  &__cornerRB {
-    position: absolute;
-  }
-
-  &__cornerLT {
-    top: -20px;
-    left: -20px;
-  }
-
-  &__cornerLB {
-    bottom: -20px;
-    left: -20px;
-  }
-
-  &__cornerRT {
-    top: -20px;
-    right: -20px;
-  }
-
-  &__cornerRB {
-    bottom: -20px;
-    right: -20px;
   }
 
   &__elementShow {

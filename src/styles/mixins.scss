@@ -1,15 +1,15 @@
 @mixin fontSizeTitleAdaptive($maxFontSize) {
   font-size: #{$maxFontSize + px};
   @media (max-width: 1500px) {
-    font-size: calc(#{$maxFontSize * 0.7 + px});
+    font-size: calc(#{$maxFontSize * 0.8 + px});
   }
 
   @media (max-width: 1200px) {
-    font-size: calc(#{$maxFontSize * 0.5 + px});
+    font-size: calc(#{$maxFontSize * 0.8 + px});
   }
 
   @media (max-width: 900px) {
-    font-size: calc(#{$maxFontSize * 0.4 + px});
+    font-size: calc(#{$maxFontSize * 0.5 + px});
   }
 }
 

@@ -1,8 +1,8 @@
 import style from "./Button.module.scss";
 
 interface Button {
-  children: string;
-  type: "logIn" | "tryAIGen";
+  children: string | JSX.Element;
+  type: "logIn" | "tryAIGen" | "submit";
 }
 
 const Button = ({ children, type }: Button) => {
