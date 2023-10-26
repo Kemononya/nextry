@@ -11,7 +11,11 @@ const Contact = () => {
   return (
     <article className={style.contact} id="contact">
       <h1>CONTACT US</h1>
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <span>
           <h2>Want to Feedback?</h2>
           <p>Just fill fields below and we will take a touch with you</p>

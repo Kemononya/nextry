@@ -48,11 +48,9 @@ const useFillingLineAndCircle = ({
         middleCircle.offsetTop - window.innerHeight / 1.5 > currentProgress
       ) {
         const percent =
-          (
-            (currentProgress -
-              (topLine?.offsetTop - window.innerHeight / 1.5)) /
-            (middleCircle?.offsetTop - topLine?.offsetTop)
-          ).toFixed(2) * 100;
+          ((currentProgress - (topLine?.offsetTop - window.innerHeight / 1.5)) /
+            (middleCircle?.offsetTop - topLine?.offsetTop)) *
+          100;
         setTopFilledLineHeight(percent);
         setTopPaleLineHeight(100 - percent);
       }
@@ -62,46 +60,36 @@ const useFillingLineAndCircle = ({
         bottomCircle.offsetTop - window.innerHeight / 1.5 > currentProgress
       ) {
         const percent =
-          (
-            (currentProgress -
-              (bottomLine?.offsetTop - window.innerHeight / 1.5)) /
-            (bottomCircle?.offsetTop - bottomLine?.offsetTop)
-          ).toFixed(2) * 100;
+          ((currentProgress -
+            (bottomLine?.offsetTop - window.innerHeight / 1.5)) /
+            (bottomCircle?.offsetTop - bottomLine?.offsetTop)) *
+          100;
         setBottomFilledLineHeight(percent);
         setBottomPaleLineHeight(100 - percent);
       }
 
-      if (
-        topCircle.offsetTop - (window.innerHeight / 1.5).toFixed() <
-        currentProgress
-      ) {
+      if (topCircle.offsetTop - window.innerHeight / 1.5 < currentProgress) {
         setTopCircleStatus("filled");
       } else if (
-        topCircle.offsetTop - (window.innerHeight / 1.5).toFixed() >
+        topCircle.offsetTop - window.innerHeight / 1.5 >
         currentProgress
       ) {
         setTopCircleStatus("pale");
       }
 
-      if (
-        middleCircle.offsetTop - (window.innerHeight / 1.5).toFixed() <
-        currentProgress
-      ) {
+      if (middleCircle.offsetTop - window.innerHeight / 1.5 < currentProgress) {
         setMiddleCircleStatus("filled");
       } else if (
-        middleCircle.offsetTop - (window.innerHeight / 1.5).toFixed() >
+        middleCircle.offsetTop - window.innerHeight / 1.5 >
         currentProgress
       ) {
         setMiddleCircleStatus("pale");
       }
 
-      if (
-        bottomCircle.offsetTop - (window.innerHeight / 1.5).toFixed() <
-        currentProgress
-      ) {
+      if (bottomCircle.offsetTop - window.innerHeight / 1.5 < currentProgress) {
         setBottomCircleStatus("filled");
       } else if (
-        bottomCircle.offsetTop - (window.innerHeight / 1.5).toFixed() >
+        bottomCircle.offsetTop - window.innerHeight / 1.5 >
         currentProgress
       ) {
         setBottomCircleStatus("pale");
