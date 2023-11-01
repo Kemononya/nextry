@@ -3,7 +3,7 @@
 .btn {
   border-radius: 16px;
   border: none;
-  background: var(--btn-color);
+  background: var(--blue-color);
 
   @include fontSizeAdaptive(20);
   color: var(--text-color);
@@ -16,11 +16,30 @@
   @include btnSizeAdaptive(142, 65);
 }
 
-.tryAIGen {
+.tryAIGenMain {
   @include btnSizeAdaptive(317, 88);
 }
 
+.tryAIGenFooter {
+  @include btnSizeAdaptive(278, 65);
+}
+
 .submit {
-  width: 600px;
+  max-width: 600px;
+  width: 100%;
   height: 88px;
+}
+
+.clothsMain {
+  width: 100%;
+  height: 50px;
+
+  border-radius: 10px;
+}
+
+.clothsSecond {
+  width: 100%;
+  height: 42px;
+
+  border-radius: 10px;
 }

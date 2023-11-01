@@ -1,0 +1,154 @@
+@import "@/styles/mixins.scss";
+
+.logInContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+
+  padding-top: 100px;
+
+  background: radial-gradient(
+    circle at center,
+    var(--background-gradient-second-color),
+    var(--background-gradient-color),
+    var(--background-color)
+  );
+
+  position: relative;
+}
+
+.logInForm {
+  width: 700px;
+  height: fit-content;
+  padding: 50px;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+  background: var(--bg-color-second);
+
+  h1 {
+    @include fontSizeAdaptive(40);
+  }
+
+  > p {
+    @include fontSizeAdaptive(18);
+    opacity: 0.5;
+  }
+}
+
+.icons {
+  display: flex;
+  gap: 15px;
+  width: fit-content;
+
+  > button {
+    width: 70px;
+    height: 70px;
+    border-radius: 16px;
+    border: none;
+    background-color: var(--blue-color);
+  }
+}
+
+.inputsBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 600px;
+  width: 100%;
+  gap: 32px;
+
+  a {
+    color: var(--blue-color);
+    @include fontSizeAdaptive(20);
+  }
+}
+
+.inputWrapper {
+  width: 100%;
+
+  position: relative;
+
+  input {
+    width: 100%;
+    height: 70px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: inherit;
+    padding: 25px;
+
+    color: var(--text-color);
+    opacity: 0.5;
+
+    @include fontSizeAdaptive(20);
+  }
+
+  input:focus {
+    border-color: var(--blue-color);
+    opacity: 1;
+  }
+
+  div {
+    position: absolute;
+    top: -12px;
+    left: 15px;
+    z-index: 99;
+
+    padding: 0 8px;
+
+    background-color: var(--bg-color-second);
+    font-size: 18px;
+    opacity: 0.5;
+  }
+
+  input:focus + div {
+    opacity: 1;
+  }
+}
+
+.policy {
+  display: flex;
+  justify-content: space-between;
+
+  &__icon {
+    min-width: 24px;
+    max-width: 24px;
+    min-height: 24px;
+    max-height: 24px;
+    border-radius: 4px;
+    border: 1px solid #fff;
+  }
+
+  p {
+    @include fontSizeAdaptive(18);
+    line-height: 160%;
+    width: 95%;
+  }
+}
+
+.link {
+  color: var(--blue-color);
+  text-decoration-line: underline;
+}
+
+.moveBack {
+  display: flex;
+  align-items: center;
+  height: fit-content;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: 700;
+
+  background: inherit;
+  color: var(--text-color);
+  opacity: 0.5;
+
+  position: absolute;
+  left: 100px;
+}

@@ -1,0 +1,17 @@
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__icons {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+  }
+}
+
+.link {
+  color: var(--blue-color);
+  text-decoration-line: underline;
+}
