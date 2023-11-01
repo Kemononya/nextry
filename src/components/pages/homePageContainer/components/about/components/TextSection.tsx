@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { GENERATOR_ROUTE } from "@/routes";
 import style from "../About.module.scss";
 
 const TextSection = () => {
@@ -12,7 +13,7 @@ const TextSection = () => {
         Transform your selfies into Professional Headshots with just a few
         clicks
       </p>
-      <Link href="/generator">TRY AI GENERATOR</Link>
+      <Link className={style.generatorLink} href={GENERATOR_ROUTE}>TRY AI GENERATOR</Link>
     </section>
   );
 };

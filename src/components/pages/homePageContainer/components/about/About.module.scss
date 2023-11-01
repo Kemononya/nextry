@@ -73,3 +73,21 @@
     }
   }
 }
+
+.generatorLink {
+  border-radius: 16px;
+  border: none;
+  background: var(--blue-color);
+
+  @include fontSizeAdaptive(20);
+  color: var(--text-color);
+  font-family: var(--font-secondary-bold);
+
+  cursor: pointer;
+
+  @include btnSizeAdaptive(317, 88);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

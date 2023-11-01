@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/Logo.svg";
-import Button from "@/components/button/Button";
 import { navbarItems } from "./navBarItems";
 import style from "./Header.module.scss";
+import { SIGN_IN_ROUTE } from "@/routes";
 
 interface IHeader {
   type: "home" | "generator";
@@ -24,7 +24,9 @@ const Header = ({ type }: IHeader) => {
           </Link>
         ))}
       </nav>
-      <Button type="logIn">Log In</Button>
+      <Link className={style.logIn} href={SIGN_IN_ROUTE}>
+        Log In
+      </Link>
     </header>
   );
 };

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/Logo.svg";
 import { navbarItems } from "./navBarItems";
+import { GENERATOR_ROUTE } from "@/routes";
 import style from "./Footer.module.scss";
 
 const Footer = () => {
@@ -16,7 +17,7 @@ const Footer = () => {
             </Link>
           ))}
         </nav>
-        <Link className={style.aiGenerator} href="/generator">
+        <Link className={style.aiGenerator} href={GENERATOR_ROUTE}>
           TRY AI GENERATOR
         </Link>
       </div>
