@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/Logo.svg";
-import { navbarItems } from "./navBarItems";
+import { navbarItemsHome, navbarItemsGenerator } from "./navBarItems";
 import style from "./Header.module.scss";
 import { SIGN_IN_ROUTE } from "@/routes";
 
@@ -11,14 +11,23 @@ interface IHeader {
   type: "home" | "generator";
 }
 
+const headerTypes = {
+  home: {
+    navBarItems: navbarItemsHome,
+    className: style.header,
+  },
+  generator: {
+    navBarItems: navbarItemsGenerator,
+    className: [style.header, style.generator].join(" "),
+  },
+};
+
 const Header = ({ type }: IHeader) => {
-  const classNameHeader =
-    type === "home" ? style.header : [style.header, style.generator].join(" ");
   return (
-    <header className={classNameHeader}>
+    <header className={headerTypes[type].className}>
       <Image src={Logo} alt="nextry logo" />
       <nav className={style.nav}>
-        {navbarItems.map(({ id, title, route }) => (
+        {headerTypes[type].navBarItems.map(({ id, title, route }) => (
           <Link key={id} href={route}>
             {title}
           </Link>

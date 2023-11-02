@@ -5,8 +5,10 @@ import Image from "next/image";
 import MoveBackIcon from "@/public/ArrowBack.png";
 import type { FormEvent } from "react";
 import Button from "@/components/button/Button";
+import { useRouter } from "next/navigation";
 
-import { SIGN_IN_ROUTE, SIGN_UP_ROUTE } from "@/routes";
+import { SIGN_IN_ROUTE, SIGN_UP_ROUTE, HOME_ROUTE } from "@/routes";
+import { SIGN_IN_API, SIGN_UP_API } from "@/api";
 
 import style from "./LogInContainer.module.scss";
 
@@ -20,35 +22,54 @@ const logInTypes = {
     bottomText: "You already have an account?",
     textForLink: "Sign In",
     route: SIGN_IN_ROUTE,
+    fetch: SIGN_UP_API,
   },
   "sign-in": {
     title: "Sign In",
     bottomText: "You don’t have an account yet?",
     textForLink: "Sign Up",
     route: SIGN_UP_ROUTE,
+    fetch: SIGN_IN_API,
   },
 };
 
 const LogInContainer = ({ type }: LogIn) => {
+  const router = useRouter();
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
 
-    /*const res = await fetch(
-            `https://9c9b-109-198-100-196.ngrok-free.app/user/login`,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                password: "asdasdsadsda",
-                login: "login",
-              }),
-            }
-          );
+    const body =
+      type === "sign-up"
+        ? {
+            name: formData.get("name"),
+            login: formData.get("email"),
+            password: formData.get("password"),
+            email: formData.get("email"),
+          }
+        : {
+            login: formData.get("email"),
+            password: formData.get("password"),
+          };
 
-          console.log(res);*/
+    try {
+      const res = await fetch(logInTypes[type].fetch, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+
+      const response = await res.json();
+
+      if (res.status === 200) {
+        
+        router.push(HOME_ROUTE);
+      }
+    } catch (e: any) {
+      console.log(e);
+    }
   };
 
   return (
@@ -85,7 +106,7 @@ const LogInContainer = ({ type }: LogIn) => {
           </div>
           <div className={style.inputWrapper}>
             <input
-              type="text"
+              type="password"
               name="password"
               placeholder=""
               required
@@ -104,7 +125,7 @@ const LogInContainer = ({ type }: LogIn) => {
             </a>
           </p>
         </div>
-        <Button type="submit">Sign In</Button>
+        <Button type="submit">{logInTypes[type].title}</Button>
         <p>
           {logInTypes[type].bottomText}{" "}
           <Link href={logInTypes[type].route} className={style.link}>
