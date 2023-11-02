@@ -9,11 +9,10 @@ const TextSection = () => {
         <h1>AI-POWERED</h1>
         <h2>photo generation made easy</h2>
       </section>
-      <p>
-        Transform your selfies into Professional Headshots with just a few
-        clicks
-      </p>
-      <Link className={style.generatorLink} href={GENERATOR_ROUTE}>TRY AI GENERATOR</Link>
+      <p>Find your style with our AI - fast and easy!</p>
+      <Link className={style.generatorLink} href={GENERATOR_ROUTE}>
+        TRY AI GENERATOR
+      </Link>
     </section>
   );
 };

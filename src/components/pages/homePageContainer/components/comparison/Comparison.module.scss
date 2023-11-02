@@ -1,10 +1,16 @@
 .comparison {
   display: flex;
+  width: 100%;
+  justify-content: center;
 
   padding: 50px 100px;
 
   @media (max-width: 1200px) {
     padding: 50px 75px;
+  }
+
+  @media (max-width: 700px) {
+    padding: 60px 0;
   }
 
   position: relative;
@@ -20,6 +26,10 @@
 
   > div > div > div > div > div:nth-child(even) {
     border-width: 5px !important;
+
+    @media (max-width: 700px) {
+      border-width: 2px !important;
+    }
   }
 }
 
@@ -30,4 +40,8 @@
   position: absolute;
 
   bottom: 50px;
+
+  @media (max-width: 700px) {
+    bottom: 60px;
+  }
 }

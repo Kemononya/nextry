@@ -11,12 +11,21 @@
     padding: 30px 75px;
   }
 
+  @media (max-width: 700px) {
+    padding: 60px 20px;
+  }
+
   color: var(--text-color);
   @include fontSizeAdaptive(20);
 
-  > img {
+  > a:nth-child(1) {
     width: 8%;
     height: 8%;
+
+    > img {
+      width: 100%;
+      height: 100%;
+    }
 
     @media (max-width: 1500px) {
       width: 9%;
@@ -27,7 +36,14 @@
       width: 10%;
       height: 10%;
     }
+
+    @media (max-width: 900px) {
+      width: 80px;
+      height: 42px;
+    }
   }
+
+  position: relative;
 }
 
 .nav {
@@ -36,13 +52,78 @@
   width: 50%;
 
   font-family: var(--font-secondary-bold);
+
+  @media (max-width: 900px) {
+    width: 60%;
+  }
+
+  @media (max-width: 700px) {
+    display: none;
+  }
+}
+
+.burger {
+  display: none;
+  @media (max-width: 700px) {
+    display: block;
+    cursor: pointer;
+  }
+}
+
+.burgerMenu {
+  display: none;
+
+  @media (max-width: 700px) {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: fit-content;
+    gap: 30px;
+    padding: 20px;
+    border-radius: 16px;
+    margin-right: 20px;
+
+    font-family: var(--font-secondary-bold);
+    background: var(--bg-color-second);
+
+    z-index: 999;
+  }
+}
+
+.burgerWrapper {
+  display: none;
+
+  @media (max-width: 700px) {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+
+    display: flex;
+    justify-content: flex-end;
+
+    position: absolute;
+    top: 100px;
+    left: 0;
+  }
+}
+
+.burgerWrapperInvisible {
+  display: none;
+  @media (max-width: 700px) {
+    display: none;
+  }
 }
 
 .generator {
   background: var(--background-color);
+
+  @media (max-width: 700px) {
+    display: none;
+  }
 }
 
-.logIn {
+.logIn,
+.logInBurger {
   border-radius: 16px;
   border: none;
   background: var(--blue-color);
@@ -55,7 +136,25 @@
 
   @include btnSizeAdaptive(142, 65);
 
-  display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 700px) {
+    display: none;
+  }
+}
+
+.logIn {
+  display: flex;
+  @media (max-width: 700px) {
+    display: none;
+  }
+}
+
+.logInBurger {
+  display: none;
+  @media (max-width: 700px) {
+    display: flex;
+    width: 100%;
+  }
 }

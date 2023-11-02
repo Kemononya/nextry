@@ -59,6 +59,15 @@ body {
     var(--background-color) 25%
   );
   font-family: var(--font-regular);
+
+  @media (max-width: 700px) {
+    background: radial-gradient(
+      circle at 50% 10%,
+      var(--background-gradient-second-color),
+      var(--background-gradient-color),
+      var(--background-color) 25%
+    );
+  }
 }
 
 html {

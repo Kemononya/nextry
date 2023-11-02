@@ -18,6 +18,14 @@
     padding-top: 50px;
   }
 
+  @media (max-width: 700px) {
+    padding: 40px 20px;
+
+    h1 {
+      font-size: 32px;
+    }
+  }
+
   &__contentBlock {
     display: flex;
     flex-direction: column;

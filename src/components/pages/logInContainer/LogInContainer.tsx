@@ -3,12 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import MoveBackIcon from "@/public/ArrowBack.png";
-import type { FormEvent } from "react";
-import Button from "@/components/button/Button";
+import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
-import { SIGN_IN_ROUTE, SIGN_UP_ROUTE, HOME_ROUTE } from "@/routes";
-import { SIGN_IN_API, SIGN_UP_API } from "@/api";
+import { HOME_ROUTE } from "@/routes";
+import { logInTypes } from "./logInTypes";
 
 import style from "./LogInContainer.module.scss";
 
@@ -16,24 +16,8 @@ interface LogIn {
   type: "sign-in" | "sign-up";
 }
 
-const logInTypes = {
-  "sign-up": {
-    title: "Sign Up",
-    bottomText: "You already have an account?",
-    textForLink: "Sign In",
-    route: SIGN_IN_ROUTE,
-    fetch: SIGN_UP_API,
-  },
-  "sign-in": {
-    title: "Sign In",
-    bottomText: "You don’t have an account yet?",
-    textForLink: "Sign Up",
-    route: SIGN_UP_ROUTE,
-    fetch: SIGN_IN_API,
-  },
-};
-
 const LogInContainer = ({ type }: LogIn) => {
+  const [isChecked, setChecked] = useState(false);
   const router = useRouter();
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -46,29 +30,20 @@ const LogInContainer = ({ type }: LogIn) => {
             login: formData.get("email"),
             password: formData.get("password"),
             email: formData.get("email"),
+            redirect: false,
           }
         : {
             login: formData.get("email"),
             password: formData.get("password"),
+            redirect: false,
           };
 
-    try {
-      const res = await fetch(logInTypes[type].fetch, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
+    const res = await signIn(logInTypes[type].fetch, body);
 
-      const response = await res.json();
-
-      if (res.status === 200) {
-        
-        router.push(HOME_ROUTE);
-      }
-    } catch (e: any) {
-      console.log(e);
+    if (res && !res.error) {
+      router.push(HOME_ROUTE);
+    } else {
+      console.log(res);
     }
   };
 
@@ -117,7 +92,13 @@ const LogInContainer = ({ type }: LogIn) => {
           <a href="#">Forgot Password?</a>
         </div>
         <div className={style.policy}>
-          <div className={style.policy__icon} />
+          <input
+            type="checkbox"
+            name="policyChecked"
+            aria-label="policyChecked"
+            className={style.policy__icon}
+            required
+          />
           <p>
             By clicking “{logInTypes[type].title}”, I agree to the{" "}
             <a href="#" className={style.link}>
@@ -125,7 +106,7 @@ const LogInContainer = ({ type }: LogIn) => {
             </a>
           </p>
         </div>
-        <Button type="submit">{logInTypes[type].title}</Button>
+        <button className={style.submit}>{logInTypes[type].title}</button>
         <p>
           {logInTypes[type].bottomText}{" "}
           <Link href={logInTypes[type].route} className={style.link}>

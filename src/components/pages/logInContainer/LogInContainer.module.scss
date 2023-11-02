@@ -40,6 +40,12 @@
     @include fontSizeAdaptive(18);
     opacity: 0.5;
   }
+
+  @media (max-width: 900px) {
+    padding: 30px 20px;
+    margin: 0 20px;
+    gap: 20px;
+  }
 }
 
 .icons {
@@ -64,9 +70,17 @@
   width: 100%;
   gap: 32px;
 
+  @media (max-width: 900px) {
+    gap: 24px;
+  }
+
   a {
     color: var(--blue-color);
     @include fontSizeAdaptive(20);
+
+    @media (max-width: 900px) {
+      font-size: 14px;
+    }
   }
 }
 
@@ -87,6 +101,10 @@
     opacity: 0.5;
 
     @include fontSizeAdaptive(20);
+
+    @media (max-width: 900px) {
+      height: 56px;
+    }
   }
 
   input:focus {
@@ -105,6 +123,10 @@
     background-color: var(--bg-color-second);
     font-size: 18px;
     opacity: 0.5;
+
+    @media (max-width: 900px) {
+      font-size: 14px;
+    }
   }
 
   input:focus + div {
@@ -116,19 +138,31 @@
   display: flex;
   justify-content: space-between;
 
-  &__icon {
+  > input {
     min-width: 24px;
     max-width: 24px;
     min-height: 24px;
     max-height: 24px;
     border-radius: 4px;
     border: 1px solid #fff;
+    background: var(--bg-color-second);
+
+    @media (max-width: 900px) {
+      min-width: 18px;
+      max-width: 18px;
+      min-height: 18px;
+      max-height: 18px;
+    }
   }
 
   p {
     @include fontSizeAdaptive(18);
     line-height: 160%;
     width: 95%;
+
+    @media (max-width: 900px) {
+      width: 90%;
+    }
   }
 }
 
@@ -151,4 +185,40 @@
 
   position: absolute;
   left: 100px;
+
+  @media (max-width: 1200px) {
+    top: 50px;
+    left: 10%;
+  }
+
+  @media (max-width: 900px) {
+    left: 20px;
+    font-size: 16px;
+
+    > img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.submit {
+  border-radius: 16px;
+  border: none;
+  background: var(--blue-color);
+
+  font-size: 20px;
+  color: var(--text-color);
+  font-family: var(--font-secondary-bold);
+
+  cursor: pointer;
+
+  max-width: 600px;
+  width: 100%;
+  height: 88px;
+
+  @media (max-width: 900px) {
+    height: 51px;
+    font-size: 18px;
+  }
 }
