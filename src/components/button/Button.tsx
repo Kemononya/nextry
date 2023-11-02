@@ -2,7 +2,7 @@ import style from "./Button.module.scss";
 
 interface Button {
   children: string | JSX.Element;
-  type: "logIn" | "tryAIGen" | "submit";
+  type: "submit";
 }
 
 const Button = ({ children, type }: Button) => {

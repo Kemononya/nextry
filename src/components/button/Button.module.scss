@@ -3,24 +3,22 @@
 .btn {
   border-radius: 16px;
   border: none;
-  background: var(--btn-color);
+  background: var(--blue-color);
 
-  @include fontSizeAdaptive(20);
+  font-size: 20px;
   color: var(--text-color);
   font-family: var(--font-secondary-bold);
 
   cursor: pointer;
 }
 
-.logIn {
-  @include btnSizeAdaptive(142, 65);
-}
-
-.tryAIGen {
-  @include btnSizeAdaptive(317, 88);
-}
-
 .submit {
-  width: 600px;
+  max-width: 600px;
+  width: 100%;
   height: 88px;
+
+  @media(max-width: 900px) {
+    height: 51px;
+    font-size: 18px;
+  }
 }

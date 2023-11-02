@@ -1,0 +1,91 @@
+@import "@/styles/mixins.scss";
+
+.about {
+  display: flex;
+  justify-content: space-around;
+  padding: 50px 100px;
+
+  width: 100%;
+  gap: 20px;
+
+  @media (max-width: 1200px) {
+    padding: 50px 75px;
+  }
+
+  @media (max-width: 700px) {
+    padding: 10px 20px;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+  }
+
+  h1 {
+    @include fontSizeTitleAdaptive(120);
+
+    @media (max-width: 700px) {
+      font-size: 50px;
+    }
+  }
+
+  h2 {
+    @include fontSizeTitleAdaptive(60);
+
+    @media (max-width: 700px) {
+      font-size: 20px;
+    }
+  }
+
+  &__textBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+    @include fontSizeAdaptive(24);
+    font-weight: 500;
+
+    @media (max-width: 700px) {
+      font-size: 16px;
+      gap: 20px;
+    }
+
+    > p {
+      text-align: center;
+    }
+  }
+
+  &__imgBlock {
+    width: 34%;
+    height: fit-content;
+
+    img:first-child {
+      width: 100%;
+      height: fit-content;
+    }
+  }
+}
+
+.generatorLink {
+  border-radius: 16px;
+  border: none;
+  background: var(--blue-color);
+
+  @include fontSizeAdaptive(20);
+  color: var(--text-color);
+  font-family: var(--font-secondary-bold);
+
+  cursor: pointer;
+
+  @include btnSizeAdaptive(317, 88);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 700px) {
+    height: 51px;
+    width: 100%;
+  }
+}

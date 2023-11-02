@@ -1,0 +1,224 @@
+@import "@/styles/mixins.scss";
+
+.logInContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+
+  padding-top: 100px;
+
+  background: radial-gradient(
+    circle at center,
+    var(--background-gradient-second-color),
+    var(--background-gradient-color),
+    var(--background-color)
+  );
+
+  position: relative;
+}
+
+.logInForm {
+  width: 700px;
+  height: fit-content;
+  padding: 50px;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+  background: var(--bg-color-second);
+
+  h1 {
+    @include fontSizeAdaptive(40);
+  }
+
+  > p {
+    @include fontSizeAdaptive(18);
+    opacity: 0.5;
+  }
+
+  @media (max-width: 900px) {
+    padding: 30px 20px;
+    margin: 0 20px;
+    gap: 20px;
+  }
+}
+
+.icons {
+  display: flex;
+  gap: 15px;
+  width: fit-content;
+
+  > button {
+    width: 70px;
+    height: 70px;
+    border-radius: 16px;
+    border: none;
+    background-color: var(--blue-color);
+  }
+}
+
+.inputsBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 600px;
+  width: 100%;
+  gap: 32px;
+
+  @media (max-width: 900px) {
+    gap: 24px;
+  }
+
+  a {
+    color: var(--blue-color);
+    @include fontSizeAdaptive(20);
+
+    @media (max-width: 900px) {
+      font-size: 14px;
+    }
+  }
+}
+
+.inputWrapper {
+  width: 100%;
+
+  position: relative;
+
+  input {
+    width: 100%;
+    height: 70px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: inherit;
+    padding: 25px;
+
+    color: var(--text-color);
+    opacity: 0.5;
+
+    @include fontSizeAdaptive(20);
+
+    @media (max-width: 900px) {
+      height: 56px;
+    }
+  }
+
+  input:focus {
+    border-color: var(--blue-color);
+    opacity: 1;
+  }
+
+  div {
+    position: absolute;
+    top: -12px;
+    left: 15px;
+    z-index: 99;
+
+    padding: 0 8px;
+
+    background-color: var(--bg-color-second);
+    font-size: 18px;
+    opacity: 0.5;
+
+    @media (max-width: 900px) {
+      font-size: 14px;
+    }
+  }
+
+  input:focus + div {
+    opacity: 1;
+  }
+}
+
+.policy {
+  display: flex;
+  justify-content: space-between;
+
+  > input {
+    min-width: 24px;
+    max-width: 24px;
+    min-height: 24px;
+    max-height: 24px;
+    border-radius: 4px;
+    border: 1px solid #fff;
+    background: var(--bg-color-second);
+
+    @media (max-width: 900px) {
+      min-width: 18px;
+      max-width: 18px;
+      min-height: 18px;
+      max-height: 18px;
+    }
+  }
+
+  p {
+    @include fontSizeAdaptive(18);
+    line-height: 160%;
+    width: 95%;
+
+    @media (max-width: 900px) {
+      width: 90%;
+    }
+  }
+}
+
+.link {
+  color: var(--blue-color);
+  text-decoration-line: underline;
+}
+
+.moveBack {
+  display: flex;
+  align-items: center;
+  height: fit-content;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: 700;
+
+  background: inherit;
+  color: var(--text-color);
+  opacity: 0.5;
+
+  position: absolute;
+  left: 100px;
+
+  @media (max-width: 1200px) {
+    top: 50px;
+    left: 10%;
+  }
+
+  @media (max-width: 900px) {
+    left: 20px;
+    font-size: 16px;
+
+    > img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.submit {
+  border-radius: 16px;
+  border: none;
+  background: var(--blue-color);
+
+  font-size: 20px;
+  color: var(--text-color);
+  font-family: var(--font-secondary-bold);
+
+  cursor: pointer;
+
+  max-width: 600px;
+  width: 100%;
+  height: 88px;
+
+  @media (max-width: 900px) {
+    height: 51px;
+    font-size: 18px;
+  }
+}

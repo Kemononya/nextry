@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@/styles/globals.scss";
 import "@/styles/mixins.scss";
+import { NextAuthProvider } from "@/components/providers/NextAuthProvider";
 
 export const metadata: Metadata = {
   title: "Nextry",
@@ -14,7 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <NextAuthProvider>{children}</NextAuthProvider>
+      </body>
     </html>
   );
 }

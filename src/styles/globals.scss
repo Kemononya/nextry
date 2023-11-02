@@ -29,8 +29,9 @@
 
   --text-color: #fef8ef;
   --background-color: #0b0511;
-  --faq-bg-color: #0d0e1b;
-  --btn-color: #2b5ac1;
+  --bg-color-second: #0d0e1b;
+  --bg-color-cloth: #131429;
+  --blue-color: #2b5ac1;
   --background-gradient-color: #00001f;
   --background-gradient-second-color: #202744;
 }
@@ -58,6 +59,15 @@ body {
     var(--background-color) 25%
   );
   font-family: var(--font-regular);
+
+  @media (max-width: 700px) {
+    background: radial-gradient(
+      circle at 50% 10%,
+      var(--background-gradient-second-color),
+      var(--background-gradient-color),
+      var(--background-color) 25%
+    );
+  }
 }
 
 html {
