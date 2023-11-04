@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import ClothesCard from "./ClothesCard";
+import Image from "next/image";
+import { BASE_URL } from "@/api";
 import style from "./ClothSelectorBlock.module.scss";
 
 interface Categories {
@@ -16,30 +17,30 @@ interface Clothes {
   preview_url: string;
 }
 
-const Categories = ({
+const ContentBlock = ({
   categories,
   clothesMan,
   clothesWoman,
+  clothesKid,
 }: {
   categories: Categories[];
   clothesMan: Clothes[];
   clothesWoman: Clothes[];
+  clothesKid: Clothes[];
 }) => {
   const [selectedCategories, setSelectedCategories] = useState("man");
+  const [selectedCloth, setSelectedCloth] = useState("");
 
-  const NavClothes = () => (
-    <nav>
-      {clothesMan.map(({ id, title, preview_url, brand_url }) => (
-        <ClothesCard
-          key={id}
-          id={id}
-          title={title}
-          preview_url={preview_url}
-          brand_url={brand_url}
-        />
-      ))}
-    </nav>
-  );
+  const clothes: { [key: string]: Clothes[] } = {
+    man: clothesMan,
+    woman: clothesWoman,
+    kid: clothesKid,
+  };
+
+  const handleClothStyle = (id: string) =>
+    selectedCloth === "" || id == selectedCloth
+      ? style.card
+      : [style.card, style.opacityCard].join(" ");
 
   return (
     <>
@@ -60,11 +61,27 @@ const Categories = ({
           ))}
         </nav>
       </section>
-      <section>
-        <NavClothes />
+      <section className={style.cardBlock}>
+        {clothes[selectedCategories].map(
+          ({ id, title, preview_url, brand_url }) => (
+            <div
+              key={id}
+              className={handleClothStyle(id)}
+              onClick={() => setSelectedCloth(id)}
+            >
+              <Image
+                src={BASE_URL + preview_url}
+                width={150}
+                height={170}
+                alt="cloth image"
+              />
+              {title}
+            </div>
+          )
+        )}
       </section>
     </>
   );
 };
 
-export default Categories;
+export default ContentBlock;

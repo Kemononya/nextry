@@ -13,27 +13,6 @@ const authConfig: AuthOptions = {
       },
       async authorize(credentials) {
         if (!credentials?.login || !credentials.password) return null;
-
-        /*
-        const users = [
-  {
-    id: "0",
-    login: "qwerty",
-    password: "123456",
-  },
-];
-        
-        const currentUser = users.find(
-          (user) => user.login === credentials.login
-        );
-
-        if (currentUser && currentUser.password === credentials.password) {
-          const { password, ...userWithoutPassword } = currentUser;
-
-          return userWithoutPassword as User;
-        }
-        return null;
-      },*/
         try {
           const res = await fetch(SIGN_IN_API, {
             method: "POST",

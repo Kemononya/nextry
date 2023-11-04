@@ -1,5 +1,5 @@
 import { GET_CATEGORIES_API, GET_CLOTHES_API } from "@/api";
-import Categories from "./Categories";
+import ContentBlock from "./ContentBlock";
 import style from "./ClothSelectorBlock.module.scss";
 
 interface Clothes {
@@ -14,21 +14,27 @@ const ClothSelectorBlock = async () => {
   const categories = await res.json();
 
   const resClothesWoman = await fetch(GET_CLOTHES_API + "?category=woman", {
-    next: { revalidate: 3600 },
+    next: { revalidate: 10 },
   });
   const clothesWoman = await resClothesWoman.json();
 
   const resClothesMan = await fetch(GET_CLOTHES_API + "?category=man", {
-    next: { revalidate: 3600 },
+    next: { revalidate: 10 },
   });
   const clothesMan: Clothes[] = await resClothesMan.json();
 
+  const resClothesKid = await fetch(GET_CLOTHES_API + "?category=kid", {
+    next: { revalidate: 10 },
+  });
+  const clothesKid: Clothes[] = await resClothesKid.json();
+
   return (
     <section className={style.clothSelectorBlock}>
-      <Categories
+      <ContentBlock
         categories={categories}
         clothesMan={clothesMan}
         clothesWoman={clothesWoman}
+        clothesKid={clothesKid}
       />
     </section>
   );
