@@ -1,68 +1,35 @@
-"use client";
-import { useState } from "react";
+import { GET_CATEGORIES_API, GET_CLOTHES_API } from "@/api";
+import Categories from "./Categories";
 import style from "./ClothSelectorBlock.module.scss";
 
-const ClothSelectorBlock = () => {
-  const [mainNav, setMainNav] = useState(0);
-  const [secondNav, setSecondNav] = useState(3);
-  const [cloth, setCloth] = useState(10);
+interface Clothes {
+  id: string;
+  title: string;
+  brand_url: string;
+  preview_url: string;
+}
 
-  const genderNav = [
-    { id: 0, title: "Women" },
-    { id: 1, title: "Men" },
-    { id: 2, title: "Kids" },
-  ];
+const ClothSelectorBlock = async () => {
+  const res = await fetch(GET_CATEGORIES_API);
+  const categories = await res.json();
 
-  const clothsNav = [
-    { id: 3, title: "Shoes" },
-    { id: 4, title: "Dresses" },
-    { id: 5, title: "Jackets" },
-    { id: 6, title: "Sneakers" },
-    { id: 7, title: "T-shirts" },
-  ];
+  const resClothesWoman = await fetch(GET_CLOTHES_API + "?category=woman", {
+    next: { revalidate: 3600 },
+  });
+  const clothesWoman = await resClothesWoman.json();
 
-  const handlerMainNavOnClick = (id: number) => {
-    setMainNav(id);
-  };
-
-  const handlerSecondNavOnClick = (id: number) => {
-    setSecondNav(id);
-  };
+  const resClothesMan = await fetch(GET_CLOTHES_API + "?category=man", {
+    next: { revalidate: 3600 },
+  });
+  const clothesMan: Clothes[] = await resClothesMan.json();
 
   return (
     <section className={style.clothSelectorBlock}>
-      <section className={style.navSection}>
-        <nav className={style.navbar}>
-          {genderNav.map(({ id, title }) => (
-            <button
-              onClick={() => handlerMainNavOnClick(id)}
-              className={[
-                style.btn,
-                style.btn__main,
-                id === mainNav ? style["btn-fill"] : null,
-              ].join(" ")}
-              key={id}
-            >
-              {title}
-            </button>
-          ))}
-        </nav>
-        <nav className={[style.navbar, style.navbar].join(" ")}>
-          {clothsNav.map(({ id, title }) => (
-            <button
-              onClick={() => handlerSecondNavOnClick(id)}
-              className={[
-                style.btn,
-                style.btn__second,
-                id === secondNav ? style["btn-fill"] : null,
-              ].join(" ")}
-              key={id}
-            >
-              {title}
-            </button>
-          ))}
-        </nav>
-      </section>
+      <Categories
+        categories={categories}
+        clothesMan={clothesMan}
+        clothesWoman={clothesWoman}
+      />
     </section>
   );
 };

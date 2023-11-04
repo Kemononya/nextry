@@ -1,4 +1,4 @@
-import { SIGN_IN_ROUTE, SIGN_UP_ROUTE, HOME_ROUTE } from "@/routes";
+import { SIGN_IN_ROUTE, SIGN_UP_ROUTE } from "@/routes";
 
 export const logInTypes = {
   "sign-up": {

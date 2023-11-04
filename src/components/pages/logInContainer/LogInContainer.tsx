@@ -17,7 +17,8 @@ interface LogIn {
 }
 
 const LogInContainer = ({ type }: LogIn) => {
-  const [isChecked, setChecked] = useState(false);
+  const [error, setError] = useState("");
+  const errorStyle = error ? style.errorMessage : style.errorHide;
   const router = useRouter();
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -31,20 +32,23 @@ const LogInContainer = ({ type }: LogIn) => {
             password: formData.get("password"),
             email: formData.get("email"),
             redirect: false,
+            callbackUrl: HOME_ROUTE,
           }
         : {
             login: formData.get("email"),
             password: formData.get("password"),
             redirect: false,
+            callbackUrl: HOME_ROUTE,
           };
 
-    const res = await signIn(logInTypes[type].fetch, body);
-
-    if (res && !res.error) {
-      router.push(HOME_ROUTE);
-    } else {
-      console.log(res);
-    }
+      const res = await signIn(logInTypes[type].fetch, body);
+      if (res && !res.error) {
+        setError("");
+        router.push(HOME_ROUTE);
+      } else {
+        console.log(res?.error)
+        setError(res?.error!);
+      }
   };
 
   return (
@@ -71,7 +75,7 @@ const LogInContainer = ({ type }: LogIn) => {
           )}
           <div className={style.inputWrapper}>
             <input
-              type="text"
+              type="email"
               name="email"
               placeholder=""
               required
@@ -89,6 +93,7 @@ const LogInContainer = ({ type }: LogIn) => {
             />
             <div>Password</div>
           </div>
+          <p className={errorStyle}>{error}</p>
           <a href="#">Forgot Password?</a>
         </div>
         <div className={style.policy}>
